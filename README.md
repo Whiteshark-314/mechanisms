@@ -1,2 +1,2 @@
-# fk-of-mechanisms
-A collection of Forward Kinematics of different Mechanisms
+# mechanisms
+A collection of several popular Mechanisms, their Forward kinematics, Inverse Kinematics, Workspace etc.
