@@ -1,4 +1,4 @@
-function [thetas,Ex,Ey] = Three_RRR_ik(active_links,passive_links,end_effector_sideLengths,fixed_coordinates,O,alpha)
+function [thetas,Ex,Ey,thetas_combi] = Three_RRR_ik(active_links,passive_links,end_effector_sideLengths,fixed_coordinates,O,alpha)
 a=active_links;
 p=passive_links;
 e=end_effector_sideLengths;
@@ -46,5 +46,8 @@ if isempty(T1)||isempty(T2)||isempty(T3)
 else
     thetas=[2*atan(T1)';2*atan(T2)';2*atan(T3)'];
 end
+thetas(thetas<0)=2*pi+thetas(thetas<0);
+thetas=sort(thetas,2);
+unique_list=unique(nchoosek([1,2,1,2,1,2],3),'rows');
+thetas_combi=[thetas(1,unique_list(:,1))', thetas(2,unique_list(:,2))', thetas(3,unique_list(:,3))'];
 end
-

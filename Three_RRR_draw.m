@@ -5,9 +5,7 @@ e=end_effector_sideLengths;
 F=fixed_coordinates;
 Fx=F(:,1);
 Fy=F(:,2);
-[thetas,Ex,Ey] = Three_RRR_ik(a,p,e,F,O,alpha);
-unique_list=unique(nchoosek([1,2,1,2,1,2],3),'rows');
-thetas_combi=[thetas(1,unique_list(:,1))', thetas(2,unique_list(:,2))', thetas(3,unique_list(:,3))'];
+[~,Ex,Ey,thetas_combi] = Three_RRR_ik(a,p,e,F,O,alpha);
 figure(1)
 for i=1:8
     if i>=5
