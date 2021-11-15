@@ -1,0 +1,42 @@
+function Z=jansen_FK(theta,link_lengths)
+[~,~,p]=size(theta);
+a=link_lengths(1);
+b=link_lengths(2);
+c=link_lengths(3);
+d=link_lengths(4);
+e=link_lengths(5);
+f=link_lengths(6);
+g=link_lengths(7);
+h=link_lengths(8);
+i=link_lengths(9);
+j=link_lengths(10);
+k=link_lengths(11);
+l=link_lengths(12);
+m=link_lengths(13);
+phi=atan(l/a);
+al=sqrt(a^2+l^2);
+p11=repmat([0;0],1,1,p);
+p10=repmat([a;0],1,1,p);
+p12=repmat([a;l],1,1,p);
+p13=p12+[m*cos(phi+theta);m*sin(phi+theta)];
+s13=sqrt(sum(p13.^2));
+Z134=bilaterationMatrix(s13,j,b);
+p14=pagemtimes(Z134,p13);
+Z145=bilaterationMatrix(b,e,d);
+p15=pagemtimes(Z145,p14);
+Z136=bilaterationMatrix(s13,k,c,-1);
+p16=pagemtimes(Z136,p13);
+p56=-p15+p16;
+%s56=det(-Z145*Z134+Z136)*s13;
+s56=sqrt(sum(p56.^2));
+Z567=bilaterationMatrix(s56,f,g,1);
+p67=pagemtimes(-Z567,p56);
+p17=p16+p67;
+Z678=bilaterationMatrix(g,h,i,1);
+p68=pagemtimes(Z678,p67);
+p18=p16+p68;
+
+Z=[p11,p10,p12,p13,p14,p15,p16,p17,p18];
+% if sum(~(isreal(Z)),'all')>0
+%     Z(:,9)=NaN;
+% end
