@@ -23,13 +23,13 @@ n=length(v);
 % alpha=cell(n^3,1);
 % Max_pos_error=cell(n^3,1);
 
-index=zeros(n^3,1);
+%index=zeros(n^3,1);
 thetas=deg2rad(getcondvects_n_k(n,3,v));
 M=size(thetas,1);
 D=getcondvects_n_k(3,9,[0,0.1,-0.1],'cell');
 ii=1;
 pos_errors=zeros(m,M);
-for i=2:size(thetas,1)
+parfor i=2:size(thetas,1)
         mech_ref=Three_RRR(A,P,E,F);
         mech_ref=fk(mech_ref,thetas(i,:));
         mech=Three_RRR(a,p,e,F);
