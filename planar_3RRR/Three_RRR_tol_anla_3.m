@@ -3,9 +3,9 @@ P=[100 100 100];
 E=[100 100 100];
 F=[0,0;200,0;100,100*sqrt(3)];
 all_possible=getcondvects_n_k(3,9,[0,0.1,-0.1]);
-a=A+all_possible(1:6561,7:9);
-p=P+all_possible(1:6561,4:6);
-e=E+all_possible(1:6561,1:3);
+a=A+all_possible(13122:end,7:9);
+p=P+all_possible(13122:end,4:6);
+e=E+all_possible(13122:end,1:3);
 m=size(a,1);
 inc=10;
 v=0:inc:360;
@@ -62,7 +62,8 @@ parfor i=2:size(thetas,1)
 %         ph{i}=NaN;
    end
 end
-[Max_pos_error,index]=max(pos_errors,[],2);
+[Max3,I3]=max(pos_errors);
+save('3rdpart','Max3','I3')
 % ex1=cell2mat(points_ex1);
 % ex2=cell2mat(points_ex2);
 % ex3=cell2mat(points_ex3);
