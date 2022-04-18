@@ -34,9 +34,6 @@ classdef Three_RPR
             obj.Fy=obj.F(:,2);
         end
 
-
-
-
         function obj = fk(obj,actuation_distances,delta,lambdas)
             %obj=ik(obj,[sum(obj.Fx)/3,sum(obj.Fy)/3],0);
             %min_rho=min(min(abs(obj.rho)));
