@@ -1,2 +1,4 @@
-*.mat
-*.xlsx
+**/*.mat
+**/*.xls
+**/*.xlsx
+**/*.png
